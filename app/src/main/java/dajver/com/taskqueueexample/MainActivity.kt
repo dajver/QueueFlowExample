@@ -2,6 +2,7 @@ package dajver.com.taskqueueexample
 
 import android.os.Bundle
 import android.os.CountDownTimer
+import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import dajver.com.taskqueueexample.models.MetaDataModel
 import dajver.com.taskqueueexample.queue.enums.Statuses
@@ -33,6 +34,7 @@ class MainActivity : AppCompatActivity(), QueueFlowListener {
     override fun onWorkItemStateChange(metaDataModel: MetaDataModel) {
         text.text = "Current state of queue: ${metaDataModel.state}"
 
+        startButton.visibility = if(metaDataModel.state == Statuses.CLEAN) View.VISIBLE else View.INVISIBLE
         if(metaDataModel.state != Statuses.CLEAN) {
             countDownTimer.start()
         }
