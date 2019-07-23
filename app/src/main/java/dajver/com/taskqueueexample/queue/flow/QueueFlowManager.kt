@@ -9,20 +9,20 @@ import dajver.com.taskqueueexample.queue.enums.Statuses.CREATE
 import dajver.com.taskqueueexample.queue.enums.Statuses.WORK
 import dajver.com.taskqueueexample.queue.flow.clean.CleanProcess
 import dajver.com.taskqueueexample.queue.flow.clean.CleanWorkItem
+import dajver.com.taskqueueexample.queue.flow.create.CreateProcess
 import dajver.com.taskqueueexample.queue.flow.create.CreateWorkItem
 import dajver.com.taskqueueexample.queue.flow.work.WorkProcess
 import dajver.com.taskqueueexample.queue.flow.work.WorkWorkItem
-import dajver.com.taskqueueexample.queue.flow.create.CreateProcess as CreateProcess1
 
 class QueueFlowManager(var queueFlowListener: QueueFlowListener) : BaseWorkListener {
 
-    private var createProcess: CreateProcess1? = null
+    private var createProcess: CreateProcess? = null
     private var workProcess: WorkProcess? = null
     private var cleanProcess: CleanProcess? = null
     private var metaDataModel: MetaDataModel? = null
 
     init {
-        createProcess = CreateProcess1(this)
+        createProcess = CreateProcess(this)
         workProcess = WorkProcess(this)
         cleanProcess = CleanProcess(this)
 
